@@ -25,7 +25,7 @@ public class PlayerCtrl : MonoBehaviour
     {
         float x = 1.0f; //右方向に走らせ続ける
         //Input.GetAxisRaw("Horizontal"); //A[-1] : Null[0] : D[+1] <キー入力>
-        
+
         float velX = rb2d.velocity.x; //x軸の速度取得
         float velY = rb2d.velocity.y; //y軸の速度取得
 
@@ -43,7 +43,7 @@ public class PlayerCtrl : MonoBehaviour
             anim.SetBool( "isFall", false );
         }
 
-        //進んだ方向を向くようにする
+        //進んだ方向を向くようにする    
         if ( x > 0 ) {
             spRend.flipX = false;
         } else if ( x < 0 ) {

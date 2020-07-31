@@ -50,3 +50,6 @@ TagManager:
   - name: ground
     uniqueID: 932719167
     locked: 0
+  - name: miniGround
+    uniqueID: 1201098223
+    locked: 0
