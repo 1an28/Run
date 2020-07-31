@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerCtrl : MonoBehaviour
 {
     public float speed;
+    public float jumpForce;
 
     private Rigidbody2D rb2d;
     private Animator anim;
@@ -29,11 +30,33 @@ public class PlayerCtrl : MonoBehaviour
         anim.SetFloat( "Speed", Mathf.Abs( velX ) ); //AnimatorのSpeedに速度を代入
         rb2d.AddForce( Vector2.right * x * speed ); //rigidbody2Dの関数を使ってplayerを移動させる
 
+        if ( velY > 1.3f ) { //ジャンプアニメーション
+            anim.SetBool( "isJump", true );
+            anim.SetBool( "isFall", false );
+        } else if ( velY < -1.3f ) { //落ちるアニメーション
+            anim.SetBool( "isJump", false );
+            anim.SetBool( "isFall", true );
+        } else { //地面にいるアニメーション
+            anim.SetBool( "isJump", false );
+            anim.SetBool( "isFall", false );
+        }
+
         //進んだ方向を向くようにする
         if ( x > 0 ) {
             spRend.flipX = false;
         } else if ( x < 0 ) {
             spRend.flipX = true;
+        }
+
+        if ( Input.GetButtonDown("Jump") ) {
+            rb2d.AddForce( Vector2.up * jumpForce );
+        }
+        
+        //慣性制限
+        if ( velX > 8.0f ) {
+            rb2d.velocity = new Vector2( 8.0f, velY );
+        } else if ( velX < -8.0f ) {
+            rb2d.velocity = new Vector2( -8.0f, velY );
         }
     }
 }
