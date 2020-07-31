@@ -23,7 +23,9 @@ public class PlayerCtrl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float x = Input.GetAxisRaw("Horizontal"); //A[-1] : Null[0] : D[+1]
+        float x = 1.0f; //右方向に走らせ続ける
+        //Input.GetAxisRaw("Horizontal"); //A[-1] : Null[0] : D[+1] <キー入力>
+        
         float velX = rb2d.velocity.x; //x軸の速度取得
         float velY = rb2d.velocity.y; //y軸の速度取得
 
@@ -48,11 +50,12 @@ public class PlayerCtrl : MonoBehaviour
             spRend.flipX = true;
         }
 
+        //飛ぶ
         if ( Input.GetButtonDown("Jump") ) {
             rb2d.AddForce( Vector2.up * jumpForce );
         }
         
-        //慣性制限
+        //速度制限
         if ( velX > 8.0f ) {
             rb2d.velocity = new Vector2( 8.0f, velY );
         } else if ( velX < -8.0f ) {
