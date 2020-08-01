@@ -5,13 +5,15 @@ using UnityEngine;
 public class CoinCtrl : MonoBehaviour
 {
     public int price = 1;
-    public PlayerCtrl playerCtrl;
 
+    private GameObject player;
+    private PlayerCtrl playerCtrl;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        player = GameObject.Find( "Player" );
+        playerCtrl = player.GetComponent<PlayerCtrl>();
     }
 
     // Update is called once per frame

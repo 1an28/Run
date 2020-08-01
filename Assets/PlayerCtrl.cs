@@ -10,6 +10,8 @@ public class PlayerCtrl : MonoBehaviour
     private Rigidbody2D rb2d;
     private Animator anim;
     private SpriteRenderer spRend;
+    private GameObject Canvas;
+    private CanvasCtrl CanvasCtrl;
 
     private int coin = 0;
     private float velX;
@@ -21,6 +23,9 @@ public class PlayerCtrl : MonoBehaviour
         this.rb2d = GetComponent<Rigidbody2D>();
         this.anim = GetComponent<Animator>();
         this.spRend = GetComponent<SpriteRenderer>();
+
+        Canvas = GameObject.Find("Canvas");
+        CanvasCtrl = Canvas.GetComponent<CanvasCtrl>();
     }
 
     // Update is called once per frame
@@ -31,6 +36,7 @@ public class PlayerCtrl : MonoBehaviour
 
         Move(); //基本移動処理, 移動アニメーション
 
+        
     }
 
     void Move() {
@@ -79,5 +85,7 @@ public class PlayerCtrl : MonoBehaviour
 
     public void GetCoin( int price ) {
         coin += price;
+        CanvasCtrl.AddScore(price);
     }
+
 }
