@@ -13,13 +13,13 @@ TagManager:
   - UI
   - 
   - 
+  - BG
   - 
+  - Ground
   - 
+  - Player
   - 
-  - 
-  - 
-  - 
-  - 
+  - Item
   - 
   - 
   - 
@@ -44,12 +44,15 @@ TagManager:
   - name: bg
     uniqueID: 1597479237
     locked: 0
-  - name: player
-    uniqueID: 3970898821
-    locked: 0
   - name: ground
     uniqueID: 932719167
     locked: 0
   - name: miniGround
     uniqueID: 1201098223
+    locked: 0
+  - name: item
+    uniqueID: 2568232791
+    locked: 0
+  - name: player
+    uniqueID: 3970898821
     locked: 0
